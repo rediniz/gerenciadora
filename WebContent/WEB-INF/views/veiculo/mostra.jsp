@@ -11,7 +11,7 @@
 <link href="resources/css/bootstrap-theme.css" rel="stylesheet">
 
 <script type="text/javascript" src="resources/js/jquery.js"></script>
-<title>Mostrar/Alterar Veículo</title>
+<title>Gerenciadora de Risco</title>
 </head>
 <body>
 	<div   class="container">

@@ -23,7 +23,7 @@ function removeVeic(id) {
 	
 
 </script>
-<title>Insert title here</title>
+<title>Gerenciadora de Risco</title>
 </head>
 <body>
 	<div  ng-app="" class="container">

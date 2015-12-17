@@ -11,7 +11,7 @@
 
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/angular.min.js"></script>
-<title>Insert title here</title>
+<title>Gerenciadora de Risco</title>
 </head>
 <body>
 	<div  ng-app="" class="container">
