@@ -48,7 +48,11 @@ public class VeiculoController {
 	}
 	
 	@RequestMapping("alteraVeiculo")
-	public String altera(Veiculo veiculo, Model model) {
+	public String altera(@Valid Veiculo veiculo, Model model, BindingResult result) {
+		
+		if(result.hasFieldErrors()) {
+			return "veiculo/mostra";
+		}
 		VeiculoDAO dao = new VeiculoDAO();
 		dao.altera(veiculo);
 		model.addAttribute(veiculo.getCliente_id());

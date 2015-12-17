@@ -55,9 +55,13 @@ public class ClienteController {
 	}
 	
 	@RequestMapping("alteraCliente")
-	public String altera(Cliente cliente) {
+	public String altera(@Valid Cliente cliente, BindingResult result) {
+		if(result.hasFieldErrors()) {
+			return "cliente/mostra";
+		}
 		ClienteDAO dao = new ClienteDAO();
 		dao.altera(cliente);
+		
 		return "redirect:listaClientes";
 	}
 	
