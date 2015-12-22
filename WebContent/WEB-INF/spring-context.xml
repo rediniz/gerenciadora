@@ -17,8 +17,8 @@
 
 	<mvc:annotation-driven /><!-- Configura permissão para o uso de anotação -->
 	<mvc:default-servlet-handler /><!-- Ignora conteúdo estático -->
-	<mvc:view-controller path="/" view-name="index"/>
-	
+	<mvc:view-controller path="/" view-name="index" />
+
 	<!-- Configuração do componente responsável pelo MVC -->
 	<context:component-scan base-package="br.com.gerenciadora.controller" /><!-- 
 		Diretório: classes de controle -->
@@ -29,17 +29,38 @@
 	</bean>
 
 	<!-- Componente de conexão -->
-	<context:component-scan base-package="br.gerenciadora.dao" />	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost/gerenciadora"/>
-        <property name="username" value="postgres"/>
-        <property name="password" value="admin"/>
-    </bean>
+	<context:component-scan base-package="br.gerenciadora.dao" />
+	<bean id="pgDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost/gerenciadora" />
+		<property name="username" value="postgres" />
+		<property name="password" value="admin" />
+	</bean>
 
+	<bean id="clienteDAO" class="br.com.gerenciadora.dao.JpaClienteDAO"></bean>
 
+	<bean id="veiculoDAO" class="br.com.gerenciadora.dao.JpaVeiculoDAO"></bean>
+
+	<!-- gerenciamento de jpa pelo spring -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="pgDataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="persistenceUnitName" value="clientes" />
+	</bean>
+	
 	<tx:annotation-driven />
+	
 
+	<!-- gerenciamento da transação pelo spring -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	
 
 
 </beans>

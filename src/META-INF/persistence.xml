@@ -25,7 +25,7 @@
   <property name="hibernate.show_sql" value="true" />
   <property name="hibernate.format_sql" value="true" />
 
-  <!--  atualiza o banco, gera as tableas se for preciso -->
+  <!--  atualiza o banco, gera as tabelas se for preciso -->
   <property name="hibernate.hbm2ddl.auto" value="update" />
     
    </properties>
@@ -37,7 +37,7 @@
    <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
    <!-- entidade mapaeada -->
-   <class>br.com.gerenciadora.modelo.Cliente</class>
+   <class>br.com.gerenciadora.modelo.Veiculo</class>
 
    <properties>
   <!-- dados da conexao -->
